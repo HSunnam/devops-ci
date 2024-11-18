@@ -25,6 +25,25 @@ resource "aws_default_security_group" "jenkins-sg" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
+  # Allow inbound TCP traffic on port 3000 (Grafana)
+  ingress {
+    from_port        = 3000
+    to_port          = 3000
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  # Allow inbound TCP traffic on port 9090 (Prometheus)
+  ingress {
+    from_port        = 9090
+    to_port          = 9090
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+
   # Allow all outbound traffic to any destination
   egress {
     from_port        = 0
