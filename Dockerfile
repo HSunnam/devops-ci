@@ -11,6 +11,9 @@ RUN npm install
 # Copy application code
 COPY . .
 
+# Build the React app
+RUN npm run build
+
 # Expose port 80
 EXPOSE 80
 
